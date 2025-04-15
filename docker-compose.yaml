@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb-service:
+    image: mongo
+    container_name: mongodb-service
+    ports:
+      - "27017:27017"
+    networks:
+      - questionnaire-network
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.runCommand('ping')"]
+      interval: 30s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
+
+  backend:
+    build:
+      context: ./questionnaire-backend
+    container_name: backend
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongodb-service:27017/questionnaire
+    depends_on:
+      - mongodb-service
+    ports:
+      - "3000:3000"
+    networks:
+      - questionnaire-network
+
+  frontend:
+    build:
+      context: ./questionnaire-frontend
+    container_name: frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - questionnaire-network
+
+networks:
+  questionnaire-network:
+    driver: bridge

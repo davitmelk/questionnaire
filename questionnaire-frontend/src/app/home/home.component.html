@@ -1,0 +1,45 @@
+<h1 class="text-center">Create a new poll</h1>
+
+<form [formGroup]="questionForm" (submit)="submitForm($event)">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th class="align-middle">
+            Question:
+        </th>
+        <th class="align-middle">
+            <div class="form-group">
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': questionForm.get('question').invalid, 'is-valid': !questionForm.get('question').invalid}" placeholder="Enter question" formControlName="question">
+            </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr formArrayName="answers" *ngFor="let answer of getFormData().controls; let i = index;">
+        <td class="align-middle">
+          <strong>Answer {{ i + 1 }}:</strong>
+        </td>
+        <td class="align-middle">
+            <div class="input-group" [formGroupName]="i">
+              <input type="text" class="form-control" [ngClass]="{'is-invalid': answer.invalid, 'is-valid': !answer.invalid}"  placeholder="Enter answer" formControlName="answer">
+              <div class="input-group-append" *ngIf="getFormData().controls.length > 2">
+                <button class="btn btn-warning" type="button" (click)="removeAnswer(i)">-</button>
+              </div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="align-middle">
+          <div class="d-flex">
+            <div>
+                <button class="btn btn-dark" type="submit">START</button>
+            </div>
+            <div class="ml-auto text-right">
+                <button class="btn btn-warning" type="button" (click)="addAnswer()">+</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

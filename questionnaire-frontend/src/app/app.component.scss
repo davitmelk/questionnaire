@@ -1,0 +1,19 @@
+.container {
+    .card {
+        margin: 40px 0 10px;
+        border-radius: 0px;
+
+        .card-header {
+            padding: 20px;
+            .logo {
+                width: 120px;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .copyright {
+        text-align: center;
+    }
+}

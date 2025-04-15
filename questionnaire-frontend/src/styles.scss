@@ -1,0 +1,28 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    font-size: 13px;
+    color: #333;
+}
+table {
+    width: 100%;
+}
+h1, h2, h3, h4, h5 {
+    font-weight: normal;
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.form-group,
+.input-group {
+    margin-bottom: 0;
+}
+table thead tr th,
+table tbody tr td {
+    padding: 10px 20px;
+}
+table thead tr th {
+    background-color: #efefef;
+    border-bottom: 2px solid #dadada;
+}

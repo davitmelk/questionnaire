@@ -1,0 +1,41 @@
+{
+  "name": "questionnaire-backend",
+  "version": "1.0.0",
+  "description": "Backend application for test task XAIG company.",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "start:build": "node ./dist/index.js",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "tsc": "tsc",
+    "clear": "if [ -d ./dist ]; then rm -rf ./dist; fi;",
+    "build": "npm-run-all clear tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.s-vl.ru/httpxss/questionnaire-backend"
+  },
+  "private": true,
+  "author": "Popov Aleksey",
+  "license": "ISC",
+  "dependencies": {
+    "@types/async": "^3.0.0",
+    "@types/body-parser": "^1.17.0",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/express": "^4.17.0",
+    "@types/mongoose": "^5.5.7",
+    "@types/socket.io": "^2.1.2",
+    "async": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.2",
+    "npm-run-all": "^4.1.5",
+    "socket.io": "^2.2.0",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.5.2"
+  }
+}
